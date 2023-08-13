@@ -1,21 +1,23 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./index.css";
+import "bootstrap/dist/css/bootstrap.min.css";
 
-import reportWebVitals from './reportWebVitals';
+import reportWebVitals from "./reportWebVitals";
 
-import AppRouter from './components/AppRouter';
-import { TagsProvider } from './components/TagsContext.js';
+import AppRouter from "./components/AppRouter";
+import { TagsProvider } from "./components/TagsContext.js";
+import { AuthProvider } from "./components/AuthContext";
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-
+const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(
   <React.StrictMode>
-    <TagsProvider>
-      <AppRouter />
-    </TagsProvider>
+    <AuthProvider>
+      <TagsProvider>
+        <AppRouter />
+      </TagsProvider>
+    </AuthProvider>
   </React.StrictMode>
 );
 

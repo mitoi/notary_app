@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { useTags } from './TagsContext';
+import { useAuth } from "./AuthContext";
 
 function DocumentFill() {
     const { tags } = useTags();
     const { docName } = useTags();
+    const { accessToken } = useAuth(); // Extract the accessToken from useAuth()
 
     // eslint-disable-next-line no-undef
     const [formValues, setFormValues] = useState({});
@@ -32,6 +34,7 @@ function DocumentFill() {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
+            Authorization: `Bearer ${accessToken}`,
           },
           body: JSON.stringify(payload),
         })
